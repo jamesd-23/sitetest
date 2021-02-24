@@ -104,13 +104,7 @@ function updateval() {
 
 
 slider.onchange = function update() {
-    coffee = slider.value;
-    bloom = coffee* 2;
-    water = coffee* 16.66;
-    document.getElementById("coffee").innerHTML = "Coffee Amount = " + coffee+"g";
-    document.getElementById("bloom").innerHTML = "Bloom = " + Math.ceil(bloom)+"g";
-    document.getElementById("water").innerHTML = "Water = " + Math.ceil(water)+"g";
-    
+   updateval(); 
 
 }
 </script>
