@@ -4,44 +4,11 @@
 <title>Begin</title>
 </head>
 <body>
-<form action="index.html" method="get">
-First Name: <input type="text" name="firstname">
-<br>
-Last Name: <input type="text" name="lastname">
-<br>
-<br>
-New Username: <input type="text" name="user">
-<br>
-Password: <input type="password" name="pass">
-<br>
-Repeat Password: <input type="password" name="rpass">
-<input type="submit" value="Submit">
-</form>
 
 <script>
 // create the object that will hold the input values
-var formValues = {};
-// store code in the function for a more 'modular' approach
-function inputObj(formNR, defaultValues) { // where defaultValues is an array
-  var inputs = formNR.getElementsByTagName('input');
-  for ( var i = 0; i < inputs.length; i++) {
-    if(inputs[i].type === 'text' || inputs[i].type === 'password') {
-      formValues[inputs[i].name] = defaultValues[i]; // store default in object
-    }
-    inputs[i].value = defaultValues[i]; // output default in input
-    inputs[i].addEventListener('keyup', function() { // update object on change
-      formValues[this.name] = this.value;
-    }, false);
-  }
-}
-// build a little array with the defaultValues for each input
-var defValues =['defaultFirstName','defaultLastName','defaultUser',
-                 'defaultPass','defaultPass'];
-// this will push all inputs from the given form in the formValues object.
-inputObj(document.forms[0], defValues); 
-
-// Access the values like this, eg.
-console.log(formValues.firstname); // will return 'defaultFirstName'
+var formValues = "hello";
+console.log(formValues); // will return 'defaultFirstName'
 </script>
 
 </body>
