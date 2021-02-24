@@ -21,8 +21,10 @@
 
 .plusbut {
   text-align: center;
-  
+}
 
+.raiio {
+  text-align: center;
 }
 
 .slidecontainer {
@@ -65,6 +67,11 @@ p {
 <body>
   <body onload="updateval()">
 <h1>V60 Quick Calculator</h1>
+<p>Enter Coffee Maker</p>
+<div class="plusbut">
+  <button onclick="maker(1,'V60')">V60</button>
+  <button onclick="maker(2,'French Press')">French Press</button>
+</div>
 <p>Enter the amount of coffer to start</p>
 
 <div class="slidecontainer">
@@ -76,11 +83,24 @@ p {
   <button onclick="minus()">Minus</button>
 </div>
 
+
+
 </body>
 
 <script>
 var slider = document.getElementById("myRange");
+var cid = 1;
+var cname = "V60";
+var coffee = 50;
+var bloom;
+var water;
 
+function maker(id,name){
+  cid = id;
+  cname = name;
+  updateval();
+
+}
 
 function plus(){
   slider.value ++;
@@ -93,15 +113,26 @@ function minus(){
   updateval();
 }
 
+
+
+
 function updateval() {
   coffee = slider.value;
-    bloom = coffee* 2;
+    if(cid ==1){
+      coffee = slider.value;
+      bloom = coffee* 2;
     water = coffee* 16.66;
+    } 
+    if(cid ==2){
+    bloom = coffee* 2;
+    water = coffee* 13.33;
+    }
     document.getElementById("coffee").innerHTML = "Coffee Amount = " + coffee+"g";
     document.getElementById("bloom").innerHTML = "Bloom = " + Math.ceil(bloom)+"g";
     document.getElementById("water").innerHTML = "Water = " + Math.ceil(water)+"g";
-}
+    document.getElementById("make").innerHTML = "Coffee Maker = " + cname;
 
+}
 
 
 slider.onchange = function update() {
@@ -111,7 +142,7 @@ slider.onchange = function update() {
 </script>
 
 
-
+<p id="make">Coffee Maker = 0g</p>
 <p id="coffee">Coffee Amount = 0g</p>
 <p id="bloom">Bloom = 0g</p>
 <p id="water">Water = 0g</p>
