@@ -2,16 +2,6 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
- <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-187017323-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-187017323-2');
-</script>
-
 <style>
 .slidecontainer {
   width: 100%;
@@ -28,10 +18,11 @@
   transition: opacity .2s;
 }
 
-.button {
+.plusbut {
   text-align: center;
-}
+  
 
+}
 
 .slidecontainer {
   text-align: center;
@@ -71,32 +62,55 @@ p {
 </style>
 </head>
 <body>
-
+  <body onload="updateval()">
 <h1>V60 Quick Calculator</h1>
-<p>Enter the amount of coffee to start</p>
+<p>Enter the amount of coffer to start</p>
 
 <div class="slidecontainer">
-  <input type="range" min="5" max="100" value="0" class="slider" id="myRange">
+  <input type="range" min="5" max="100" step="1" value="50" class="slider" id="myRange">
 </div>
 
+<div class="plusbut">
+  <button onclick="plus()">Plus</button>
+  <button onclick="minus()">Minus</button>
+</div>
 
-
+</body>
 
 <script>
 var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
 
 
-
-slider.oninput = function update() {
+function plus(){
+  slider.value ++;
+  updateval();
   
+}
+
+function minus(){
+  slider.value --;
+  updateval();
+}
+
+function updateval() {
+  coffee = slider.value;
+    bloom = coffee* 2;
+    water = coffee* 16.66;
+    document.getElementById("coffee").innerHTML = "Coffee Amount = " + coffee+"g";
+    document.getElementById("bloom").innerHTML = "Bloom = " + Math.ceil(bloom)+"g";
+    document.getElementById("water").innerHTML = "Water = " + Math.ceil(water)+"g";
+}
+
+
+
+slider.onchange = function update() {
     coffee = slider.value;
     bloom = coffee* 2;
     water = coffee* 16.66;
     document.getElementById("coffee").innerHTML = "Coffee Amount = " + coffee+"g";
     document.getElementById("bloom").innerHTML = "Bloom = " + Math.ceil(bloom)+"g";
     document.getElementById("water").innerHTML = "Water = " + Math.ceil(water)+"g";
-    document.getElementById("output").innerHTML = slidervalue;
+    
 
 }
 </script>
@@ -106,7 +120,7 @@ slider.oninput = function update() {
 <p id="coffee">Coffee Amount = 0g</p>
 <p id="bloom">Bloom = 0g</p>
 <p id="water">Water = 0g</p>
-<p id="output">Water = 0g</p>
+
 
 
 </body>
